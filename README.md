@@ -1,8 +1,8 @@
 # count-button
 ## Installation of the support button.
-### Custom Support Buttons WordPress Plugin
+### Count buttons WordPress Plugin
 
-Custom Support Buttons is a WordPress plugin that allows you to easily add customized support buttons to your posts.
+Count buttons is a WordPress plugin that allows you to easily add customized count buttons to your posts.
 
 ## Install
 
@@ -15,14 +15,12 @@ To use this plugin, follow these steps
 
 Log in to your WordPress admin dashboard.
 
-Follow these steps to display custom support buttons on your posts and fixed pages.
+Follow these steps to display count buttons on your posts pages.
 
-1. go to the edit screen of the post or fixed page. 
-Paste the shortcode `[support_button]` anywhere you want. 
+1. activate the plugin from the WordPress admin panel.
 2. apply additional CSS if necessary to customize the appearance. 
-3. if you want to change the text output by pressing the button, edit the corresponding part of the JavaScript file.
 
-By following these steps, you can set up your custom support button and display it on your posts and fixed pages.
+By following these steps, you can set up your count button and display it on your post pages.
 
 
 ## License
