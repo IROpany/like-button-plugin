@@ -1,7 +1,7 @@
 <?php
-/**
- * Plugin Name: My Like Button Plugin
- * Description: Adds a like button to posts.
+/*
+   Plugin Name: My Like Button Plugin
+   Description: Adds a like button to posts.
 　　Version: 1.0
 　　Author: Iro
  */
