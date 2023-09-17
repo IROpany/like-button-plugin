@@ -1,5 +1,8 @@
 # count-button
-## Installation of the support button.
+## Description
+
+カウントボタンは、ショートコードで投稿ページにボタンを配置するプラグインです。ボタンをクリックすると、クリック数がカウントされ表示されます。
+
 ### Count buttons WordPress Plugin
 
 Count buttons is a WordPress plugin that allows you to easily add customized count buttons to your posts.
