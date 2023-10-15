@@ -46,10 +46,8 @@ This project is licensed under [license name](https://github.com/IROpany/support
 
 Thank you for the contribution of the contributors. Your cooperation will contribute to the growth of the project.
 
-[Code Style Guide]: Insert URL here
-
-[License name]: Insert the license name used by the project
-
+[Code Style Guide]:(https://github.com/IROpany/count-button/blob/main/CODE_OF_CONDUCT.md)
+[License name]: 
 ### 8. A link
 
 For more information about the contribution guidelines, please refer to [here].
