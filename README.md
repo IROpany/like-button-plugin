@@ -1,11 +1,11 @@
-# count-button
+# like-button-posts-plugin
 ## Description
 
 カウントボタンは、投稿ページに自動でいいねボタンを配置するプラグインです。ボタンをクリックすると、クリック数がカウントされて表示されます。
 
-### Count buttons WordPress Plugin
+### Like Button Posts WordPress Plugin
 
-Count buttons is a WordPress plugin that allows you to easily add customized count buttons to your posts.
+Like button is a WordPress plugin that allows you to easily add customized count buttons to your posts.
 
 ## Install
 
