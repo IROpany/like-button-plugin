@@ -6,12 +6,20 @@
 　　Author: Iro
  */
 
-// スクリプトとスタイルを読み込む
-function my_enqueue_scripts() {
-    wp_enqueue_script('jquery'); // jQueryを読み込む
-    wp_enqueue_script('my-like-button', plugin_dir_url(__FILE__) . 'js/my-like-button.js', array('jquery'), '1.0.0', true); // カスタムスクリプトを読み込む
+// Enqueue scripts and styles
+//このコードセクションは、WordPressでJavaScriptとCSSファイルを読み込むためのものです。
+function my_enqueue_scripts_and_styles() {
+    // jQuery
+    wp_enqueue_script('jquery');
+
+    // JavaScriptファイル
+    wp_enqueue_script('my-like-button', plugin_dir_url(__FILE__) . 'js/my-like-button.js', array('jquery'), '1.0.0', true);
+
+    // CSSファイル
+    wp_enqueue_style('my-like-button-css', plugin_dir_url(__FILE__) . 'css/style.css', array(), '1.0.0', 'all');
 }
-add_action('wp_enqueue_scripts', 'my_enqueue_scripts');
+add_action('wp_enqueue_scripts', 'my_enqueue_scripts_and_styles');
+
 
 // いいねボタンのクリックを処理するためのAJAX関数
 function my_like_button_ajax() {
