@@ -2,6 +2,7 @@
   padding: 10px 10px; /* パディングでボタンサイズを調整 */
   font-size: 17px; /* フォントサイズを大きく */
   border: 2px solid #ccc; /* ボーダーを追加 */
+  color:#fff; /* 文字色の調整 */
   background-color: #81aacd; /* 背景色を変更 */
   border-radius: 10px; /* 角を丸めて立体感を出す */
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* 影を追加して立体感を強調 */
