@@ -17,8 +17,8 @@ Count buttons is a WordPress plugin that allows you to easily add customized cou
 To use this plugin, follow these steps.
 
 1. activate the plugin from the WordPress admin panel.
-2. apply additional CSS if necessary to customize the appearance. 
-
+2. The appearance is adjusted from the css file.
+   
 By following these steps, you can set up your count button and display it on your post pages.
 
 
