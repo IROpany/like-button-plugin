@@ -3,7 +3,7 @@
    Plugin Name: Like Button Posts Plugin
    Description: Adds a like button to posts.
 　　Version: 1.0
-　　Author: Iro
+　　Author: WP_Iro
  */
 
 // Enqueue scripts and styles
