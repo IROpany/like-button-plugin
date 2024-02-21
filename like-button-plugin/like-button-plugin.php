@@ -6,6 +6,12 @@
    Author: Iro
  */
 
+// ファイルへの直接アクセスした場合は終了する
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; 
+}
+
+
 // Enqueue scripts and styles
 function my_enqueue_scripts_and_styles() {
     // jQuery
