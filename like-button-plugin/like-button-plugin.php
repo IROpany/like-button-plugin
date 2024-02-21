@@ -2,12 +2,11 @@
 /*
    Plugin Name: Like Button Posts Plugin
    Description: Adds a like button to posts.
-　　Version: 1.0
-　　Author: Iro
+   Version: 1.0
+   Author: Iro
  */
 
 // Enqueue scripts and styles
-//このコードセクションは、WordPressでJavaScriptとCSSファイルを読み込むためのものです。
 function my_enqueue_scripts_and_styles() {
     // jQuery
     wp_enqueue_script('jquery');
@@ -25,7 +24,7 @@ add_action('wp_enqueue_scripts', 'my_enqueue_scripts_and_styles');
 function my_like_button_ajax() {
     check_ajax_referer('my-like-nonce', 'security'); // セキュリティチェック
 
-    $post_id = intval($_POST['post_id']); // ポストIDを取得
+    $post_id = absint($_POST['post_id']); // ポストIDを取得
     $likes = get_post_meta($post_id, 'my_like_count', true); // いいね数を取得
     $likes++; // いいね数を増やす
     update_post_meta($post_id, 'my_like_count', $likes); // メタデータを更新
@@ -52,8 +51,8 @@ function my_add_like_button($content) {
         $post_id = get_the_ID(); // 投稿IDを取得
         $likes = get_post_meta($post_id, 'my_like_count', true); // いいね数を取得
 
-        $like_button = '<button class="like-button" data-post-id="' . $post_id . '">Like</button>'; // いいねボタン
-        $like_count = '<span class="like-count" data-post-id="' . $post_id . '">' . $likes . '</span>'; // いいね数の表示
+        $like_button = '<button class="like-button" data-post-id="' . esc_attr($post_id) . '">Like</button>'; // いいねボタン
+        $like_count = '<span class="like-count" data-post-id="' . esc_attr($post_id) . '">' . $likes . '</span>'; // いいね数の表示
 
         $content .= '<div>' . $like_button . ' ' . $like_count . '</div>'; // 投稿コンテンツに追加
     }
