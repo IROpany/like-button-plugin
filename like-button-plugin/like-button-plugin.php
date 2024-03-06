@@ -21,7 +21,7 @@ function my_enqueue_scripts_and_styles() {
     wp_enqueue_script('my-like-button', plugin_dir_url(__FILE__) . 'js/my-like-button.js', array('jquery'), false , true);
 
     // CSSファイル
-    wp_enqueue_style('my-like-button-css', plugin_dir_url(__FILE__) . 'css/style.css', array(), '1.0.0', 'all');
+    wp_enqueue_style('my-like-button-css', plugin_dir_url(__FILE__) . 'css/style.css', array(), false , 'all');
 }
 add_action('wp_enqueue_scripts', 'my_enqueue_scripts_and_styles');
 
