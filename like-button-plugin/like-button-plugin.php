@@ -5,6 +5,7 @@
    Version: 1.0
    Author: Chick
    Author URI: https://iropany.com/Chick/
+   Text Domain: wp-total-hacks
 */
 
 // ファイルへの直接アクセスした場合は終了する
