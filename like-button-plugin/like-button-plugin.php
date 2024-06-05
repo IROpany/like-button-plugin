@@ -3,8 +3,9 @@
    Plugin Name: Like Button Posts Plugin
    Description: Adds a like button to posts.
    Version: 1.0
-   Author: Iro
- */
+   Author: Chick
+   Author URI: https://iropany.com/Chick/
+*/
 
 // ファイルへの直接アクセスした場合は終了する
 if ( ! defined( 'ABSPATH' ) ) {
