@@ -5,6 +5,7 @@
    Version: 1.0
    Author: Chick
    Author URI: https://iropany.com/Chick/
+   Domain Path: languages
    Text Domain: wp-total-hacks
 */
 
