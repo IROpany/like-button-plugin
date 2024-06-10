@@ -1,0 +1,24 @@
+name: Security Check
+
+on: [push, pull_request]
+
+jobs:
+  security:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      
+    - name: Install PHP and Composer
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.0'
+        tools: composer:v2
+      
+    - name: Install dependencies
+      run: composer install
+      
+    - name: Run security checker
+      run: composer global require sensiolabs/security-checker && php -d memory_limit=-1 $(composer global config home)/vendor/bin/security-checker security:check composer.lock
+
