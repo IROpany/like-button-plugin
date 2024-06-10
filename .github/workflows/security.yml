@@ -1,6 +1,7 @@
 name: Security Check
 
-on: [push, pull_request]
+on:
+  workflow_dispatch: # ここに workflow_dispatch トリガーが含まれていることを確認する
 
 jobs:
   security:
