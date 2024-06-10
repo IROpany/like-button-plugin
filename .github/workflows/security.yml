@@ -10,6 +10,9 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
       
+    - name: Change directory to repository root
+      run: cd like-button-posts-plugin
+      
     - name: Install PHP and Composer
       uses: shivammathur/setup-php@v2
       with:
@@ -21,4 +24,3 @@ jobs:
       
     - name: Run security checker
       run: composer global require sensiolabs/security-checker && php -d memory_limit=-1 $(composer global config home)/vendor/bin/security-checker security:check composer.lock
-
