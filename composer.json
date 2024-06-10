@@ -1,1 +1,16 @@
-
+{
+    "name": "like-button-posts-plugin",
+    "description": "Adds a like button to posts.",
+    "version": "1.0",
+    "authors": [
+        {
+            "name": "Chick",
+            "homepage": "https://iropany.com/Chick/"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    }
+}
