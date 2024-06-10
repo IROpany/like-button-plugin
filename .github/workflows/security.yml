@@ -11,7 +11,7 @@ jobs:
       uses: actions/checkout@v3
       
     - name: Change directory to repository root
-      run: cd like-button-posts-plugin
+      run: cd $GITHUB_WORKSPACE
       
     - name: Install PHP and Composer
       uses: shivammathur/setup-php@v2
