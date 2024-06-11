@@ -1,14 +1,15 @@
 name: Security Check
 
 on:
-  workflow_dispatch: # ここに workflow_dispatch トリガーが含まれていることを確認する
+  workflow_dispatch:
 
 jobs:
   security:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v3 # Node.js 20 を使用するアクションに更新
+    - name: Checkout repository
+      uses: actions/checkout@v3
       
     - name: Change directory to repository root
       run: cd $GITHUB_WORKSPACE
@@ -22,5 +23,8 @@ jobs:
     - name: Install dependencies
       run: composer install
       
+    - name: Install local PHP Security Checker
+      run: composer global require fabpot/local-php-security-checker
+      
     - name: Run security checker
-      run: composer global require sensiolabs/security-checker && php -d memory_limit=-1 $(composer global config home)/vendor/bin/security-checker security:check composer.lock
+      run: php -d memory_limit=-1 $(composer global config home)/vendor/bin/local-php-security-checker --path=./composer.lock
