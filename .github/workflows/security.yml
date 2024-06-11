@@ -30,4 +30,4 @@ jobs:
         sudo mv local-php-security-checker_1.10.0_linux_amd64 /usr/local/bin/local-php-security-checker
       
     - name: Run security checker
-      run: /usr/local/bin/local-php-security-checker --path=./composer.lock
+      run: local-php-security-checker --path=./composer.lock
