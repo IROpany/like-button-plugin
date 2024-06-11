@@ -1,15 +1,14 @@
-name: Update Security Check Workflow
+name: Security Check
 
 on:
-  workflow_dispatch:
+  workflow_dispatch: # ここに workflow_dispatch トリガーが含まれていることを確認する
 
 jobs:
   security:
     runs-on: ubuntu-latest
     
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+    - uses: actions/checkout@v3 # Node.js 20 を使用するアクションに更新
       
     - name: Change directory to repository root
       run: cd $GITHUB_WORKSPACE
