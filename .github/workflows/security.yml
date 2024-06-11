@@ -20,9 +20,6 @@ jobs:
         php-version: '8.0'
         tools: composer:v2
       
-    - name: Install dependencies
-      run: composer install
-      
     - name: Install local PHP Security Checker
       run: |
         curl -LO https://github.com/fabpot/local-php-security-checker/releases/latest/download/local-php-security-checker_1.10.0_linux_amd64
