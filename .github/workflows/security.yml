@@ -1,7 +1,7 @@
-name: Security Check
+name: Update Security Check Workflow
 
 on:
-  workflow_dispatch: # ここに workflow_dispatch トリガーが含まれていることを確認する
+  workflow_dispatch:
 
 jobs:
   security:
