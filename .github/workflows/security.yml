@@ -6,7 +6,7 @@ on:
 jobs:
   security:
     runs-on: ubuntu-latest
-    
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
@@ -24,7 +24,7 @@ jobs:
       run: composer install
       
     - name: Install local PHP Security Checker
-      run: composer global require fabpot/local-php-security-checker
+      run: curl -LO https://github.com/fabpot/local-php-security-checker/releases/latest/download/local-php-security-checker_1.10.0_linux_amd64 && chmod +x local-php-security-checker && mv local-php-security-checker /usr/local/bin/
       
     - name: Run security checker
-      run: php -d memory_limit=-1 $(composer global config home)/vendor/bin/local-php-security-checker --path=./composer.lock
+      run: /usr/local/bin/local-php-security-checker --path=./composer.lock
