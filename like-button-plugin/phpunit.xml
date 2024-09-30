@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit>
     <testsuites>
-        <testsuite name="MyTestSuite">
+        <testsuite name="UnitTests">
             <directory>./tests/unit</directory>
         </testsuite>
-        <testsuite name="IntegrationTestSuite">
+        <testsuite name="IntegrationTests">
             <directory>./tests/integration</directory>
         </testsuite>
     </testsuites>
@@ -13,9 +13,12 @@
         <whitelist>
             <directory suffix=".php">./src</directory>
         </whitelist>
+        <blacklist>
+            <directory>./tests</directory> <!-- テストコードをカバレッジから除外 -->
+        </blacklist>
     </filter>
 
     <php>
-        <ini name="error_reporting" value="-1"/>
+        <ini name="error_reporting" value="-1"/> <!-- 開発時には便利だが注意 -->
     </php>
 </phpunit>
