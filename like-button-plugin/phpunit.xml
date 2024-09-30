@@ -11,7 +11,7 @@
 
     <filter>
         <whitelist>
-            <directory suffix=".php">./src</directory>
+            <directory suffix=".php">./src</directory> <!-- コードカバレッジの対象 -->
         </whitelist>
         <blacklist>
             <directory>./tests</directory> <!-- テストコードをカバレッジから除外 -->
@@ -20,5 +20,6 @@
 
     <php>
         <ini name="error_reporting" value="-1"/> <!-- 開発時には便利だが注意 -->
+        <ini name="display_errors" value="1"/> <!-- エラーメッセージを表示 -->
     </php>
 </phpunit>
