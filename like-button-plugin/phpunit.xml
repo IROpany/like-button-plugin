@@ -3,9 +3,7 @@
     <testsuites>
         <testsuite name="MyTestSuite">
             <directory>./tests/unit</directory>
-        </testsuite>
-        <testsuite name="IntegrationTests">
-            <directory>./tests/integration</directory>
+            <directory>./tests/integration</directory> <!-- integration テストも追加 -->
         </testsuite>
     </testsuites>
 
