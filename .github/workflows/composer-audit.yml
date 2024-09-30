@@ -23,7 +23,10 @@ jobs:
         tools: composer:v2
 
     - name: Run Composer install
-      run: composer install --working-dir=like-button-plugin
+      run: composer install
 
     - name: Run Composer audit
-      run: composer audit --working-dir=like-button-plugin
+      run: composer audit
+
+    - name: Run PHP_CodeSniffer
+      run: vendor/bin/phpcs --standard=PSR12 --extensions=php like-button-plugin/src/
