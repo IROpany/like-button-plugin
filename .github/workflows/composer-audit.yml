@@ -1,6 +1,12 @@
 name: Security Check
 
 on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
@@ -27,3 +33,18 @@ jobs:
 
       - name: Run Composer audit
         run: composer audit --working-dir=like-button-plugin
+
+      - name: Run PHPUnit tests
+        run: vendor/bin/phpunit --working-dir=like-button-plugin
+
+      - name: Install PHP_CodeSniffer
+        run: composer global require "squizlabs/php_codesniffer=*"
+
+      - name: Run PHP_CodeSniffer
+        run: phpcs --standard=PSR2 --working-dir=like-button-plugin
+
+      - name: Install PHPStan
+        run: composer require --dev phpstan/phpstan
+
+      - name: Run PHPStan
+        run: vendor/bin/phpstan analyse --working-dir=like-button-plugin
