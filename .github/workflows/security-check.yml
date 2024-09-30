@@ -38,7 +38,7 @@ jobs:
         run: ls like-button-plugin/vendor/bin
 
       - name: Run PHPUnit tests
-        run: ./like-button-plugin/vendor/bin/phpunit  # または適切なテストスイート名を指定
+        run: ./like-button-plugin/vendor/bin/phpunit --testsuite MyTestSuite  # テストスイート名を指定
 
       - name: Install PHP_CodeSniffer
         run: composer global require "squizlabs/php_codesniffer=*"
