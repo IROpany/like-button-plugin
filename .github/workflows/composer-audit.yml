@@ -9,16 +9,21 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
-      
-    - name: Change directory to repository root
-      run: cd $GITHUB_WORKSPACE
-      
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
     - name: Install PHP and Composer
       uses: shivammathur/setup-php@v2
       with:
         php-version: '8.0'
         tools: composer:v2
-      
+
+    - name: Run Composer install
+      run: composer install --working-dir=like-button-posts-plugin
+
     - name: Run Composer audit
-      run: composer audit
+      run: composer audit --working-dir=like-button-posts-plugin
