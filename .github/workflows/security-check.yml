@@ -25,7 +25,7 @@ jobs:
       - name: Install PHP and Composer
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.0'
+          php-version: '8.3'  # 最新のPHPバージョンに更新
           tools: composer:v2
 
       - name: Run Composer install
@@ -41,16 +41,16 @@ jobs:
         run: ./like-button-plugin/vendor/bin/phpunit --testsuite MyTestSuite  # テストスイート名を指定
 
       - name: Install PHP_CodeSniffer
-        run: composer global require "squizlabs/php_codesniffer=*"
+        run: composer require --dev squizlabs/php_codesniffer --working-dir=like-button-plugin  # プロジェクト内にインストール
 
       - name: Check PHP_CodeSniffer path
         run: which phpcs
 
       - name: Run PHP_CodeSniffer
-        run: phpcs --standard=PSR2 --working-dir=like-button-plugin
+        run: ./vendor/bin/phpcs --standard=PSR2 --working-dir=like-button-plugin  # プロジェクト内のパスを指定
 
       - name: Install PHPStan
-        run: composer require --dev phpstan/phpstan --working-dir=like-button-plugin
+        run: composer require --dev phpstan/phpstan:^1.10 --working-dir=like-button-plugin  # バージョンを指定
 
       - name: Run PHPStan
         run: ./like-button-plugin/vendor/bin/phpstan analyse --working-dir=like-button-plugin
