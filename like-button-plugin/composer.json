@@ -1,7 +1,7 @@
 {
     "name": "iropany/like-button-posts-plugin",
-    "description": "Adds a like button to posts.",
-    "version": "1.0",
+    "description": "Adds a Shortcode like button to posts.",
+    "version": "2.0",
     "authors": [
         {
             "name": "Chick",
@@ -10,7 +10,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "": "src/"
+            "Iropany\\ShortcodeLikeButtonPlugin\\": "src/"
         }
     }
 }
