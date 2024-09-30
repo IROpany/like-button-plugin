@@ -29,22 +29,22 @@ jobs:
           tools: composer:v2
 
       - name: Run Composer install
-        run: composer install # --working-dirを削除
+        run: composer install --working-dir=./ # ルートディレクトリを指定
 
       - name: Run Composer audit
-        run: composer audit # --working-dirを削除
+        run: composer audit --working-dir=./ # ルートディレクトリを指定
 
       - name: Run PHPUnit tests
-        run: vendor/bin/phpunit # --working-dirを削除
+        run: vendor/bin/phpunit --working-dir=./ # ルートディレクトリを指定
 
       - name: Install PHP_CodeSniffer
         run: composer global require "squizlabs/php_codesniffer=*"
 
       - name: Run PHP_CodeSniffer
-        run: phpcs --standard=PSR2
+        run: phpcs --standard=PSR2 --working-dir=./ # ルートディレクトリを指定
 
       - name: Install PHPStan
         run: composer require --dev phpstan/phpstan
 
       - name: Run PHPStan
-        run: vendor/bin/phpstan analyse
+        run: vendor/bin/phpstan analyse --working-dir=./ # ルートディレクトリを指定
