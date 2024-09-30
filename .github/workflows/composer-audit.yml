@@ -23,7 +23,7 @@ jobs:
         tools: composer:v2
 
     - name: Run Composer install
-      run: composer install --working-dir=like-button-posts-plugin
+      run: composer install --working-dir=like-button-plugin
 
     - name: Run Composer audit
-      run: composer audit --working-dir=like-button-posts-plugin
+      run: composer audit --working-dir=like-button-plugin
