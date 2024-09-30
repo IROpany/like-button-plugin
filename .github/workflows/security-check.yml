@@ -33,18 +33,21 @@ jobs:
 
       - name: Run Composer audit
         run: composer audit --working-dir=like-button-plugin
-        
+
+      - name: List vendor/bin directory
+        run: ls like-button-plugin/vendor/bin
+
       - name: Run PHPUnit tests
-        run: vendor/bin/phpunit --working-dir=like-button-plugin # working-dirオプションは必要ないかも
-        
+        run: vendor/bin/phpunit --working-dir=like-button-plugin
+
       - name: Install PHP_CodeSniffer
         run: composer global require "squizlabs/php_codesniffer=*"
 
       - name: Run PHP_CodeSniffer
-        run: phpcs --standard=PSR2 --working-dir=like-button-plugin # working-dirを適切に指定
+        run: phpcs --standard=PSR2 --working-dir=like-button-plugin
 
       - name: Install PHPStan
-        run: composer require --dev phpstan/phpstan --working-dir=like-button-plugin # working-dirを追加
+        run: composer require --dev phpstan/phpstan --working-dir=like-button-plugin
 
       - name: Run PHPStan
-        run: vendor/bin/phpstan analyse --working-dir=like-button-plugin # working-dirを適切に指定
+        run: vendor/bin/phpstan analyse --working-dir=like-button-plugin
