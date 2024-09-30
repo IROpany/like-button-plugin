@@ -35,10 +35,10 @@ jobs:
         run: composer audit --working-dir=like-button-plugin
 
       - name: List vendor/bin directory
-        run: ls like-button-plugin/vendor/bin
+        run: ls like-button-plugin/vendor/bin  # 追加ステップ
 
       - name: Run PHPUnit tests
-        run: vendor/bin/phpunit --working-dir=like-button-plugin
+        run: ./like-button-plugin/vendor/bin/phpunit  # パスを修正
 
       - name: Install PHP_CodeSniffer
         run: composer global require "squizlabs/php_codesniffer=*"
@@ -50,4 +50,4 @@ jobs:
         run: composer require --dev phpstan/phpstan --working-dir=like-button-plugin
 
       - name: Run PHPStan
-        run: vendor/bin/phpstan analyse --working-dir=like-button-plugin
+        run: ./like-button-plugin/vendor/bin/phpstan analyse --working-dir=like-button-plugin
