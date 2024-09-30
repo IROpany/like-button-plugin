@@ -35,13 +35,16 @@ jobs:
         run: composer audit --working-dir=like-button-plugin
 
       - name: List vendor/bin directory
-        run: ls like-button-plugin/vendor/bin  # 追加ステップ
+        run: ls like-button-plugin/vendor/bin
 
       - name: Run PHPUnit tests
-        run: ./like-button-plugin/vendor/bin/phpunit --testsuite phpunit.xml　# テストスイート名を指定（またはテストディレクトリを指定）
+        run: ./like-button-plugin/vendor/bin/phpunit  # または適切なテストスイート名を指定
 
       - name: Install PHP_CodeSniffer
         run: composer global require "squizlabs/php_codesniffer=*"
+
+      - name: Check PHP_CodeSniffer path
+        run: which phpcs
 
       - name: Run PHP_CodeSniffer
         run: phpcs --standard=PSR2 --working-dir=like-button-plugin
