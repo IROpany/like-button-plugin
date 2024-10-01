@@ -25,11 +25,8 @@ jobs:
     - name: Run Composer install
       run: composer install --working-dir=like-button-plugin
 
-    - name: Install PHP_CodeSniffer
-      run: composer require --dev squizlabs/php_codesniffer
+    - name: Run Plugin Check
+      run: wp plugin check --path=like-button-plugin
 
-    - name: Run Composer audit
-      run: composer audit --working-dir=like-button-plugin
-
-    - name: Run PHP_CodeSniffer
-      run: vendor/bin/phpcs --standard=PSR2 --extensions=php --ignore=vendor/ like-button-plugin/src/
+    - name: Run Theme Check
+      run: wp theme check --path=like-button-plugin
