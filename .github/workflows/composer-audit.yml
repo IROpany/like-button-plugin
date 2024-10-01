@@ -25,4 +25,5 @@ jobs:
     - name: Run Composer install
       run: composer install --working-dir=like-button-plugin
 
-    - name: Run Composer audit 　　run: composer audit --working-dir=like-button-plugin   
+    - name: Run Composer audit 
+      run: composer audit --working-dir=like-button-plugin   
