@@ -1,4 +1,4 @@
-# like-button-posts-plugin
+# Like Button Posts Plugin
 ## Description
 
 カウントボタンは、投稿ページに自動でいいねボタンを配置するプラグインです。ボタンをクリックすると、クリック数がカウントされて表示されます。
