@@ -25,17 +25,4 @@ jobs:
     - name: Run Composer install
       run: composer install --working-dir=like-button-plugin
 
-    - name: Install WP-CLI
-      run: |
-        curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-        chmod +x wp-cli.phar
-        sudo mv wp-cli.phar /usr/local/bin/wp
-
-    - name: Check WP-CLI Version
-      run: wp --version
-
-    - name: Run Plugin Check
-      run: wp plugin check --path=like-button-plugin
-
-    - name: Run Theme Check
-      run: wp theme check --path=like-button-plugin
+    - name: Run Composer audit 　　run: composer audit --working-dir=like-button-plugin   
