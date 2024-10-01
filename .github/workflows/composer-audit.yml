@@ -26,7 +26,7 @@ jobs:
       run: composer install --working-dir=like-button-plugin
 
     - name: Install PHP_CodeSniffer
-      run: composer global require "squizlabs/php_codesniffer=*"
+      run: composer require --dev squizlabs/php_codesniffer
 
     - name: Run Composer audit
       run: composer audit --working-dir=like-button-plugin
