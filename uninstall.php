@@ -12,6 +12,7 @@ function my_like_button_delete_plugin() {
     $wpdb->query( "DELETE FROM {$wpdb->postmeta} WHERE meta_key = 'my_like_count'" );
 
     // 必要に応じて、プラグインで作成されたその他のオプションやデータを削除
+    // もしオプションを削除する場合
     // delete_option('my_plugin_option');
 }
 
