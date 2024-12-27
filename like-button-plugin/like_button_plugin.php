@@ -17,8 +17,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // Enqueue scripts and styles
 function my_enqueue_scripts_and_styles() {
-    // jQuery
-    wp_enqueue_script('jquery');
 
     // JavaScriptファイル
     wp_enqueue_script('my-like-button', plugin_dir_url(__FILE__) . 'js/my-like-button.js', array('jquery'), false , true);
