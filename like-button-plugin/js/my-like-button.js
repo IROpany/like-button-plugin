@@ -2,7 +2,7 @@ jQuery(document).ready(function($) {
   $('.like-button').on('click', function() {
     var postId = $(this).data('post-id');
 
-    // 既にいいね済みなら処理を止める（連打・重複防止）
+    // すでにいいね済みかチェック（ローカルストレージで）
     if (localStorage.getItem('liked_' + postId)) {
       alert('この投稿にはすでに「いいね」しています。');
       return;
@@ -17,8 +17,20 @@ jQuery(document).ready(function($) {
         security: my_ajax_params.my_ajax_nonce
       },
       success: function(response) {
-        $('.like-count[data-post-id="' + postId + '"]').text(response);
-        localStorage.setItem('liked_' + postId, true); // いいね済みを記録
+        if (response.success) {
+          // 正しく「いいね」数を表示
+          $('.like-count[data-post-id="' + postId + '"]').text(response.data);
+          localStorage.setItem('liked_' + postId, true);
+        } else {
+          if (response.data === 'already_liked') {
+            alert('この投稿にはすでに「いいね」しています。');
+          } else {
+            alert('エラーが発生しました。');
+          }
+        }
+      },
+      error: function(xhr, status, error) {
+        alert('通信エラー：' + error);
       }
     });
   });
