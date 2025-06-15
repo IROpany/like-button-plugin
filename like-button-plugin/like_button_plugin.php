@@ -31,18 +31,38 @@ add_action('wp_enqueue_scripts', 'my_enqueue_scripts_and_styles');
 function my_like_button_ajax() {
     check_ajax_referer('my-like-nonce', 'security'); // セキュリティチェック
 
-    $post_id = absint($_POST['post_id']); // ポストIDを取得し、サニタイズ
-    $likes = get_post_meta($post_id, 'my_like_count', true); // いいね数を取得
+    $post_id = absint($_POST['post_id']); // 投稿IDを取得しサニタイズ
+    $user_id = get_current_user_id(); // 現在のログインユーザーIDを取得
 
-if (!is_numeric($likes)) {
-    $likes = 0;
-}
-   
+    if ($user_id) { // ログインしている場合のみ制限をかける
+        $liked_users = get_post_meta($post_id, 'my_liked_users', true); // いいねしたユーザー一覧を取得
+
+        if (!is_array($liked_users)) {
+            $liked_users = array();
+        }
+
+        if (in_array($user_id, $liked_users)) {
+            // すでにいいね済みなのでエラーを返す
+            echo 'already_liked';
+            wp_die(); // 処理終了
+        }
+
+        // いいねしていなければユーザーIDを追加して保存
+        $liked_users[] = $user_id;
+        update_post_meta($post_id, 'my_liked_users', $liked_users);
+    }
+
+    // いいね数を取得
+    $likes = get_post_meta($post_id, 'my_like_count', true);
+    if (!is_numeric($likes)) {
+        $likes = 0;
+    }
+
     $likes++; // いいね数を増やす
-    update_post_meta($post_id, 'my_like_count', $likes); // メタデータを更新
-    echo $likes; // 新しいいいね数を返す
+    update_post_meta($post_id, 'my_like_count', $likes); // 保存
 
-    die(); // 処理を終了
+    echo $likes; // 新しいいいね数を返す
+    wp_die(); // 処理終了
 }
 add_action('wp_ajax_my_like_button', 'my_like_button_ajax'); // ログインユーザー用のAJAXアクション
 add_action('wp_ajax_nopriv_my_like_button', 'my_like_button_ajax'); // 非ログインユーザー用のAJAXアクション
