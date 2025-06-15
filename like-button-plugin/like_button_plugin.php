@@ -33,6 +33,11 @@ function my_like_button_ajax() {
 
     $post_id = absint($_POST['post_id']); // ポストIDを取得し、サニタイズ
     $likes = get_post_meta($post_id, 'my_like_count', true); // いいね数を取得
+
+if (!is_numeric($likes)) {
+    $likes = 0;
+}
+   
     $likes++; // いいね数を増やす
     update_post_meta($post_id, 'my_like_count', $likes); // メタデータを更新
     echo $likes; // 新しいいいね数を返す
@@ -56,13 +61,18 @@ add_action('wp_enqueue_scripts', 'my_enqueue_ajax_params');
 function my_add_like_button($content) {
     if (is_singular('post')) { // 投稿ページの場合
         global $post;
-        $post_id = $post->ID; // 投稿IDを取得
-        $likes = get_post_meta($post_id, 'my_like_count', true); // いいね数を取得し、サニタイズ
+        $post_id = $post->ID;
+        $likes = get_post_meta($post_id, 'my_like_count', true);
 
-        $like_button = '<button class="like-button" data-post-id="' . esc_attr($post_id) . '">Like</button>'; // いいねボタン
-        $like_count = '<span class="like-count" data-post-id="' . esc_attr($post_id) . '">' . esc_html($likes) . '</span>'; // いいね数の表示
+        if (!is_numeric($likes)) {
+            $likes = 0;
+        }
 
-        $content .= '<div>' . $like_button . ' ' . $like_count . '</div>'; // 投稿コンテンツに追加
+        $like_button = '<button class="like-button" data-post-id="' . esc_attr($post_id) . '">Like</button>';
+        $like_count = '<span class="like-count" data-post-id="' . esc_attr($post_id) . '">' . esc_html($likes) . '</span>';
+        $noscript = '<noscript><p>※「いいね」機能を利用するにはJavaScriptを有効にしてください。</p></noscript>';
+
+        $content .= '<div class="my-like-wrapper">' . $like_button . ' ' . $like_count . $noscript . '</div>';
     }
 
     return $content;
