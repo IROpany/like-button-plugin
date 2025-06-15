@@ -28,40 +28,46 @@ add_action('wp_enqueue_scripts', 'my_enqueue_scripts_and_styles');
 
 
 // いいねボタンのクリックを処理するためのAJAX関数
+// いいねボタンのクリックを処理するためのAJAX関数
 function my_like_button_ajax() {
-    check_ajax_referer('my-like-nonce', 'security'); // セキュリティチェック
+    // セキュリティチェック（nonceの検証）
+    check_ajax_referer('my-like-nonce', 'security');
 
-    $post_id = absint($_POST['post_id']); // 投稿IDを取得しサニタイズ
-    $user_id = get_current_user_id(); // 現在のログインユーザーIDを取得
+    // 投稿IDを取得し、整数化して安全に扱う
+    $post_id = absint($_POST['post_id']);
+    // 現在のログインユーザーIDを取得（ログインしていなければ0）
+    $user_id = get_current_user_id();
 
-    if ($user_id) { // ログインしている場合のみ制限をかける
-        $liked_users = get_post_meta($post_id, 'my_liked_users', true); // いいねしたユーザー一覧を取得
-
+    if ($user_id) { // ログインユーザーの場合の処理
+        // いいねしたユーザーIDの配列を取得（未保存の場合は空配列にする）
+        $liked_users = get_post_meta($post_id, 'my_liked_users', true);
         if (!is_array($liked_users)) {
             $liked_users = array();
         }
 
+        // すでにいいね済みのユーザーであれば、エラーを返して処理を終了
         if (in_array($user_id, $liked_users)) {
-            // すでにいいね済みなのでエラーを返す
-            echo 'already_liked';
-            wp_die(); // 処理終了
+            wp_send_json_error('already_liked'); // JSON形式でエラーを返す
+            wp_die(); // 以降の処理を停止
         }
 
-        // いいねしていなければユーザーIDを追加して保存
+        // まだいいねしていなければ、ユーザーIDを配列に追加して保存
         $liked_users[] = $user_id;
         update_post_meta($post_id, 'my_liked_users', $liked_users);
     }
-
-    // いいね数を取得
+    // いいね数を取得し、数値でなければ0に初期化
     $likes = get_post_meta($post_id, 'my_like_count', true);
     if (!is_numeric($likes)) {
         $likes = 0;
     }
 
-    $likes++; // いいね数を増やす
-    update_post_meta($post_id, 'my_like_count', $likes); // 保存
+    // いいね数を1増やす
+    $likes++;
+    // いいね数を更新して保存
+    update_post_meta($post_id, 'my_like_count', $likes);
 
-    echo $likes; // 新しいいいね数を返す
+    // 成功レスポンスとして新しいいいね数をJSON形式で返す
+    wp_send_json_success($likes);
     wp_die(); // 処理終了
 }
 add_action('wp_ajax_my_like_button', 'my_like_button_ajax'); // ログインユーザー用のAJAXアクション
