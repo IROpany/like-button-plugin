@@ -28,7 +28,6 @@ add_action('wp_enqueue_scripts', 'my_enqueue_scripts_and_styles');
 
 
 // いいねボタンのクリックを処理するためのAJAX関数
-// いいねボタンのクリックを処理するためのAJAX関数
 function my_like_button_ajax() {
     // セキュリティチェック（nonceの検証）
     check_ajax_referer('my-like-nonce', 'security');
